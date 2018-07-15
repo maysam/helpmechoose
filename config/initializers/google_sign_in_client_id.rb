@@ -1,3 +1,4 @@
-GoogleSignIn::Identity.client_id = '548879979522-1de7d3ub4pc131eues5h6iapgmm1c42a.apps.googleusercontent.com'
+GoogleSignIn::Identity.client_id = '548879979522-1de7d3ub4pc131eues5h6iapgmm1c42a.apps.googleusercontent.com' if Rails.env.development?
 
-# secret = P7o8mU7j_8JSMeGJcDt9yqJS
+GoogleSignIn::Identity.client_id = '548879979522-jst5hc5q334h96navh3g74gq3mdsocu1.apps.googleusercontent.com' if Rails.env.production?
+
