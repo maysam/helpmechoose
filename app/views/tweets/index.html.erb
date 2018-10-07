@@ -12,9 +12,13 @@
   <tbody>
     <% @tweets.each do |tweet| %>
       <tr>
-        <td><%= link_to 'Show', tweet %></td>
+
+        <td><%= tweet.user %></td>
+        <td><%= tweet.text %></td>
+        <td><%= time_ago_in_words(tweet.created_at) %></td>
+        <!-- <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>

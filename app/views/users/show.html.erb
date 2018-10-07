@@ -3,7 +3,7 @@
 <%= @user.name %>
 <%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
 <br />
-<% @user.tweets.each do |tweet| %>
+<% @user.tweets.order(id: :desc).each do |tweet| %>
 <div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
   <div style="width: 200px">
     (posted <%= time_ago_in_words(tweet.created_at) %> ago)
