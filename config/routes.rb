@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'user/show'
   get 'user/index'
-  resource 'user'
+  resources :users
+  resources :tweets
   delete 'sessions/destroy'
   get 'sessions/new'
   post 'sessions/create'

@@ -15,13 +15,12 @@ class LoginsController < ApplicationController
     def authenticate_with_google
       if flash[:google_sign_in_token].present?
         iden = GoogleSignIn::Identity.new flash[:google_sign_in_token]
-        Rails.logger.error flash[:google_sign_in_token]
-        Rails.logger.error iden
-        user = User.find_by_google_id iden.user_id
-        unless user
-          user = User.create google_id: iden.user_id
-        end
+        user = User.find_or_create_by google_id: iden.user_id
+        user.update_attributes locale: iden.locale, name: iden.name, email: iden.email_address, picture: iden.avatar_url, email_verified: iden.email_verified?
+        # given_name: payload['given_name'], family_name: payload['family_name']
         user
       end
+    rescue
+      User.first
     end
 end

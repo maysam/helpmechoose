@@ -2,3 +2,15 @@
 <br />
 <%= @user.name %>
 <%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
+<br />
+<% @user.tweets.each do |tweet| %>
+<div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 400px">
+  <div>
+    <%= tweet.created_at %>
+  </div>
+  <div>
+    <%= tweet.text %>
+  </div>
+</div>
+<% end %>
+<%= render 'tweets/form', tweet: @user.tweets.new %>
