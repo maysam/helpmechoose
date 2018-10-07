@@ -7,7 +7,7 @@ class LoginsController < ApplicationController
       cookies.signed[:user_id] = user.id
       redirect_to user
     else
-      redirect_to new_session_url, alert: 'authentication_failed'
+      redirect_to sessions_new_url, alert: 'authentication_failed'
     end
   end
 
@@ -20,7 +20,8 @@ class LoginsController < ApplicationController
         # given_name: payload['given_name'], family_name: payload['family_name']
         user
       end
-    rescue
+    rescue StandardError => e
+      Rails.logger.error e
       User.first
     end
 end

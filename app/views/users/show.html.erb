@@ -4,13 +4,15 @@
 <%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
 <br />
 <% @user.tweets.each do |tweet| %>
-<div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 400px">
-  <div>
-    <%= tweet.created_at %>
+<div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
+  <div style="width: 200px">
+    (posted <%= time_ago_in_words(tweet.created_at) %> ago)
+
   </div>
-  <div>
+  <div style="width: 600px">
     <%= tweet.text %>
   </div>
 </div>
+<br />
 <% end %>
 <%= render 'tweets/form', tweet: @user.tweets.new %>
