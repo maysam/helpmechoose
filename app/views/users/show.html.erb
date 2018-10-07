@@ -1,4 +1,4 @@
-<%= image_tag @user.picture %>
+<%= image_tag(@user.picture) if @user.picture %>
 <br />
 <%= @user.name %>
 <%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
