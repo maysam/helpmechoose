@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
       cookies.signed[:user_id] = user.id
       redirect_to user
     else
-      redirect_to sessions_new_url, alert: "authentication_failed"
+      redirect_to new_session_url, alert: "authentication_failed"
     end
   end
 
   def destroy
     cookies.signed[:user_id] = nil
-    redirect_to sessions_new_url, alert: "logout_successfull"
+    redirect_to new_session_url, alert: "logout_successfull"
   end
 
   private

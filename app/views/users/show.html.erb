@@ -1,8 +1,28 @@
 <%= image_tag(@user.picture) if @user.picture %>
 <br />
 <%= @user.name %>
-<%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
+<%= button_to 'Server Logout', "/sessions/destroy", method: "delete" %>
 <br />
+<br />
+<a href="#" onclick="signOut()">Iran - Sign out</a>
+<script>
+  window.addEventListener('load', function() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    })
+  })
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+      post('/users/signout')
+    });
+  }
+</script>
+
+<br />
+
 <% @user.tweets.order(id: :desc).each do |tweet| %>
 <div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
   <div style="width: 200px">

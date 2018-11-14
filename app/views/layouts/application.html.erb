@@ -4,6 +4,9 @@
     <title>Helpmechoose</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-signin-client_id" content="548879979522-pfjjpteqqm1r21rirnfqbk65eufh3pdh.apps.googleusercontent.com">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,6 +14,7 @@
   </head>
 
   <body>
+    <%= alert %>
     <%= yield %>
   </body>
 </html>

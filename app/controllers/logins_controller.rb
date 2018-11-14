@@ -3,11 +3,12 @@ class LoginsController < ApplicationController
   end
 
   def create
-    if user = authenticate_with_google
+    user = authenticate_with_google
+    if user.id
       cookies.signed[:user_id] = user.id
       redirect_to user
     else
-      redirect_to sessions_new_url, alert: 'authentication_failed'
+      redirect_to sessions_url, alert: user.name
     end
   end
 
@@ -24,6 +25,7 @@ class LoginsController < ApplicationController
       end
     rescue StandardError => e
       Rails.logger.error e
-      User.first
+      #   User.first
+      User.new name: e.message
     end
 end
