@@ -22,7 +22,11 @@
 </script>
 
 <br />
-
+<div data-controller="my">
+  <button type="dashed" data-action="my#hello">Say Hello 2!</button>
+  <span data-target="my.output">no hello yet</span>
+</div>
+<br />
 <% @user.tweets.order(id: :desc).each do |tweet| %>
 <div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
   <div style="width: 200px">

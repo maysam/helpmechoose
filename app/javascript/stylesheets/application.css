@@ -1,0 +1,204 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= 'antd/dist/antd.css';
+ *= require antd
+ *= require_tree .
+ *= require_self
+ */
+
+
+#google-sign-in {
+  margin-top: 10px;
+  /*display: inline-block;*/
+  width: 200px;
+  height: 51px;
+  background-image: url("/google_signin_buttons/web/2x/btn_google_signin_dark_normal_web@2x.png");
+  background-size: contain;
+}
+
+#google-sign-in:hover {
+  background-image: url("/google_signin_buttons/web/2x/btn_google_signin_dark_focus_web@2x.png");
+}
+
+#google-sign-in:active {
+  background-image: url("/google_signin_buttons/web/2x/btn_google_signin_dark_pressed_web@2x.png");
+}
+
+
+.skins-air {
+  background-color: #fff;
+  color: #333;
+  font-family: Quicksand, verdana, arial, helvetica, sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  margin: 0;
+  padding: 1em 3em;
+  line-height: 1.4;
+}
+
+.skins-air a {
+  color: #08c;
+  text-decoration: none;
+}
+
+.skins-air a:visited {
+  color: #08c;
+}
+
+.skins-air a:hover {
+  text-decoration: underline;
+}
+
+.skins-air a[data-method="delete"] {
+  color: #F44141;
+}
+
+.skins-air h1 {
+  font-size: 2em;
+  margin-bottom: .5em;
+}
+
+/* form */
+
+.skins-air .field, .skins-air .actions {
+  margin-bottom: .8em;
+}
+
+
+.skins-air input, .skins-air select, .skins-air textarea {
+  font-family: Quicksand, verdana, arial, helvetica, sans-serif;
+  font-size: 1em;
+  outline: 0;
+  margin: 0;
+}
+
+.skins-air input[type="text"],
+.skins-air input[type="password"],
+.skins-air textarea {
+  border: 1px solid #ccc;
+  padding: .3em .5em;
+  width: 20em;
+}
+
+.skins-air input[type="text"]:hover,
+.skins-air input[type="password"]:hover,
+.skins-air textarea:hover {
+  border-color: #08c;
+}
+
+.skins-air input[type="submit"],
+.skins-air button {
+  padding: .5em 1em;
+  display: inline-block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 2px;
+  border: 1px solid #11B8DF;
+  border-bottom: 3px solid #0D96B6;
+  background: #53C0F9;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: bold;
+  line-height: 1.43;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.skins-air input[type="submit"]:active,
+.skins-air button:active {
+  border-bottom-color: #41B5F0;
+}
+
+.skins-air textarea {
+  min-height: 5em;
+}
+
+.skins-air select {
+  padding: 0 2em;
+  height: 2em;
+  border: 1px solid #ccc;
+  background: white;
+  display: inline-block;
+  font-size: 1em;
+}
+
+/* form errors */
+
+.skins-air .field_with_errors {
+  display: inline-block;
+  color: #F72525;
+}
+
+.skins-air .field_with_errors input[type="text"],
+.skins-air .field_with_errors input[type="password"] {
+  border-color: #FA7A7A;
+}
+
+/* table */
+
+.skins-air table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.skins-air th,
+.skins-air td {
+  text-align: left;
+  vertical-align: top;
+  padding: .5em .8em;
+  border-bottom: 1px solid #eee;
+}
+
+.skins-air th:first-child,
+.skins-air td:first-child {
+  padding-left: 0;
+}
+
+.skins-air th:last-child,
+.skins-air td:last-child {
+  padding-right: 0;
+}
+
+.skins-air th {
+  border-bottom-width: 3px;
+}
+
+/* errors */
+
+.skins-air #notice {
+  color: #368913;
+  font-weight: bold;
+}
+
+.skins-air #error_explanation {
+  margin-bottom: 1em;
+}
+
+.skins-air #error_explanation h2 {
+  color: #FA7A7A;
+}
+
+.skins-air #error_explanation ul {
+  padding-left: 1.3em;
+}
+
+.skins-air #error_explanation li {
+  font-size: .9em;
+  list-style: square;
+  font-style: italic;
+}
