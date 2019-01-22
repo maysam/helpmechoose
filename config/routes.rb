@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :books
   get 'user/show'
   get 'user/index'
   resources :users
   resources :tweets
+  resources :words
+  post 'words/:id', to: 'words#save_meanings'
   # delete 'sessions/destroy'
   # get 'sessions/new'
   # post 'sessions/new'
@@ -14,4 +17,12 @@ Rails.application.routes.draw do
   get 'login/create', to: 'logins#create', as: :create_login
   post 'users/auth'
   post 'users/signout'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      get '/', to: 'sync#index'
+      get 'fetch', to: 'sync#fetch'
+      post 'post', to: 'sync#post'
+    end
+  end
 end

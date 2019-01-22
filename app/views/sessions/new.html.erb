@@ -1,5 +1,5 @@
-<h3>Client Side Login - Good for Iran</h3>
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<h3>Login (Popup) - Good for Iran</h3>
+<div class="g-signin2" data-onsuccess="onSignIn" /> </div>
 <script type="text/javascript">
 function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
@@ -8,8 +8,7 @@ function onSignIn(googleUser) {
 </script>
 
 <hr />
-<h3>Server Side Login</h3>
+<h3>Login (Redirect)</h3>
 <%= google_sign_in_button proceed_to: create_login_url do
   image_tag('google_logo.png', alt: 'Google', width: '100px')
 end %>
-<!--   <%= button_tag('', id: 'google-sign-in') %> -->

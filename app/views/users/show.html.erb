@@ -1,10 +1,3 @@
-<%= image_tag(@user.picture) if @user.picture %>
-<br />
-<%= @user.name %>
-<%= button_to 'Server Logout', "/sessions/destroy", method: "delete" %>
-<br />
-<br />
-<a href="#" onclick="signOut()">Iran - Sign out</a>
 <script>
   window.addEventListener('load', function() {
     gapi.load('auth2', function() {
@@ -21,22 +14,21 @@
   }
 </script>
 
-<br />
 <div data-controller="my">
   <button type="dashed" data-action="my#hello">Say Hello 2!</button>
   <span data-target="my.output">no hello yet</span>
 </div>
-<br />
-<% @user.tweets.order(id: :desc).each do |tweet| %>
-<div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
-  <div style="width: 200px">
-    (posted <%= time_ago_in_words(tweet.created_at) %> ago)
 
+<% @user.tweets.order(id: :desc).each do |tweet| %>
+  <div style="display: flex; flex-direction: row; flex; justify-content: space-between; width: 800px">
+    <div style="width: 600px">
+      <%= tweet.text %>
+      <br>
+      <small>posted <%= time_ago_in_words(tweet.created_at) %> ago</small>
+    </div>
   </div>
-  <div style="width: 600px">
-    <%= tweet.text %>
-  </div>
-</div>
-<br />
 <% end %>
-<%= render 'tweets/form', tweet: @user.tweets.new %>
+
+<div class="panel">
+  <%= render 'tweets/form', tweet: @user.tweets.new %>
+</div>

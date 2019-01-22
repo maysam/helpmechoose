@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  recorded_at: 2018-10-13 10:08:56
+  client_id: MyString
+  sent_at: 2018-10-13 10:08:56
+  status: 1
+
+two:
+  user: two
+  recorded_at: 2018-10-13 10:08:56
+  client_id: MyString
+  sent_at: 2018-10-13 10:08:56
+  status: 1

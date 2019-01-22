@@ -17,6 +17,15 @@
   <body class="skins-air">
     <%= alert %>
     <div id="root">
+      <% if @user %>
+        <div style="float: right;">
+          <%= image_tag(@user.picture, style: 'border-radius: 50%; width: 50px') if @user.picture %>
+          <%= @user.name %>
+          <%= button_to 'Logout', "/sessions/destroy", method: "delete" %>
+          <a href="#" onclick="signOut()">Sign out (popup)</a>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
     <div class="page-wrapper">

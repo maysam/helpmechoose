@@ -34,6 +34,10 @@
   background-image: url("/google_signin_buttons/web/2x/btn_google_signin_dark_pressed_web@2x.png");
 }
 
+.right {
+  float: right;
+  margin: 5px;
+}
 
 .skins-air {
   background-color: #fff;
@@ -97,7 +101,7 @@
 }
 
 .skins-air input[type="submit"],
-.skins-air button {
+.skins-air button, .button {
   padding: .5em 1em;
   display: inline-block;
   margin-top: 1em;
@@ -120,7 +124,7 @@
 }
 
 .skins-air input[type="submit"]:active,
-.skins-air button:active {
+.skins-air button:active , .button:active {
   border-bottom-color: #41B5F0;
 }
 

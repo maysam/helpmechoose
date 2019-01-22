@@ -10,10 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_205323) do
+ActiveRecord::Schema.define(version: 2019_01_21_133419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "alphabets", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "flag"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "name"
+    t.string "author"
+    t.string "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "flag"
+  end
+
+  create_table "meanings", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "language_id"
+    t.bigint "alphabet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "text"
+    t.index ["alphabet_id"], name: "index_meanings_on_alphabet_id"
+    t.index ["language_id"], name: "index_meanings_on_language_id"
+    t.index ["word_id"], name: "index_meanings_on_word_id"
+  end
+
+  create_table "moods", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "recorded_at"
+    t.string "client_id"
+    t.datetime "sent_at"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_moods_on_client_id"
+    t.index ["recorded_at"], name: "index_moods_on_recorded_at"
+    t.index ["status"], name: "index_moods_on_status"
+    t.index ["user_id"], name: "index_moods_on_user_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.bigint "parent_id"
@@ -38,5 +109,14 @@ ActiveRecord::Schema.define(version: 2018_09_30_205323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "words", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "meanings", "alphabets"
+  add_foreign_key "meanings", "languages"
+  add_foreign_key "meanings", "words"
+  add_foreign_key "moods", "users"
   add_foreign_key "tweets", "users"
 end

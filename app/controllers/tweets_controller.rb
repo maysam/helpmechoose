@@ -3,7 +3,11 @@ class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
   def set_user
-    @user = User.find cookies.signed[:user_id]
+    if cookies.signed[:user_id] && user = User.find_by(id: cookies.signed[:user_id])
+      @user = User.find cookies.signed[:user_id]
+    else
+      redirect_to new_session_url
+    end
   end
 
   # GET /tweets

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: one
+  language: one
+  alphabet: one
+
+two:
+  word: two
+  language: two
+  alphabet: two

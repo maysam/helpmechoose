@@ -1,0 +1,2 @@
+class Alphabet < ApplicationRecord
+end

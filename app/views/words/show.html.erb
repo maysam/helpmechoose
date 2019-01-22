@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag @word.picture.variant(resize: "300x300") %>
+<%= link_to 'Edit', edit_word_path(@word), class: 'button right' %>
+<%= link_to 'Back', words_path, class: 'button right' %>
+<%= form_with(model: @word, local: true, method: 'post') do |form| %>
+  <table class="table">
+    <thead>
+      <th>
+
+      </th>
+      <%= Language.all.map { |lang| "<th>#{lang.flag} - #{lang.name} - #{lang.code}</th>"  }.join.html_safe %>
+    </thead>
+    <% Alphabet.all.map do |alphabet| %>
+      <tr>
+        <td>
+          <%= "#{alphabet.flag} - #{alphabet.name} - #{alphabet.code}" %>
+        </td>
+        <% Language.all.map do |lang|
+          meaning = @word.meanings.where(language: lang, alphabet: alphabet).first&.text
+        %>
+          <td>
+            <input
+              class='meaning'
+              data-language='<%=lang.code%>'
+              data-alphabet='<%=alphabet.code%>'
+              name="Language<%=lang.code%>Alphabet<%=alphabet.code%>"
+              placeholder="<%="#{alphabet.flag} - #{alphabet.name} - #{alphabet.code}"%>"
+              value="<%=meaning%>"
+            />
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <div class="actions">
+    <%= form.submit %>
+    <%= button_tag "Reset", type: :reset %>
+  </div>
+<% end %>

@@ -13,9 +13,14 @@
     <% @tweets.each do |tweet| %>
       <tr>
 
-        <td><%= tweet.user %></td>
-        <td><%= tweet.text %></td>
-        <td><%= time_ago_in_words(tweet.created_at) %></td>
+        <td style="white-space: nowrap; float: left;">
+          <%= image_tag(tweet.user.picture, style: 'border-radius: 50%; width: 50px') if tweet.user.picture %>
+        </td>
+        <td>
+          <small><%= tweet.user %> <%= time_ago_in_words(tweet.created_at) %></small>
+          <br>
+          <big><%= tweet.text %></big>
+        </td>
         <!-- <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
         <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
