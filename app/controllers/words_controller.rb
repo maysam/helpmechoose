@@ -4,7 +4,7 @@ class WordsController < ApplicationController
   # GET /words
   # GET /words.json
   def index
-    @words = Word.all
+    @words = Word.all.includes(:meanings)
   end
 
   # GET /words/1
@@ -28,10 +28,12 @@ class WordsController < ApplicationController
   # GET /words/new
   def new
     @word = Word.new
+    @word.word_tags.build
   end
 
   # GET /words/1/edit
   def edit
+    @word.word_tags.new
   end
 
   # POST /words
@@ -82,7 +84,7 @@ class WordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def word_params
-      # params.fetch(:word, {})
-      params.require(:word).permit(:picture)
+      params.fetch(:word, {}).permit(:picture, word_tags_attributes: [:id, :tag_id, :_destroy])
+      # params.require(:word).permit(:picture, :word_tags)
     end
 end

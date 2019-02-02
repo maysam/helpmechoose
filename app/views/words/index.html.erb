@@ -14,9 +14,9 @@
   <tbody>
     <% @words.each do |word| %>
       <tr>
-        <td><%= image_tag word.picture.variant(resize: "200") %></td>
+        <td><%= image_tag(word.picture.variant(resize: "200")) if word.picture.attached? %></td>
         <%= Language.all.map { |lang|
-          "<td>" + word.meanings.where(language: lang).map { |meaning| meaning }.join('<br />') + "</td>"
+          "<td>" + word.meanings.where(language: lang).map { |meaning| meaning.text.empty? ? '' :  "<span class='#{meaning.alphabet.code}'>#{meaning}</span><br />" }.join + "</td>"
         }.join.html_safe %>
         <td><%= link_to 'Show', word %></td>
         <td><%= link_to 'Edit', edit_word_path(word) %></td>

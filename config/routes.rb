@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'user/index'
   resources :users
   resources :tweets
+  resources :tags
   resources :words
   post 'words/:id', to: 'words#save_meanings'
   # delete 'sessions/destroy'

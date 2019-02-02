@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @tag.text %>
+  <br />
+  <strong>Words:</strong>
+  <%= @tag.words.map{|word|
+    link_to word.to_s, word
+  }.join(' - ').html_safe %>
+</p>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>

@@ -1,0 +1,50 @@
+<%= form_with(model: tag, local: true) do |form| %>
+  <% if tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+
+      <ul>
+      <% tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<hr />
+<%= simple_form_for(@tag) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :text %>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Task Name</th>
+        <th>Completed</th>
+        <th>Due</th>
+      </tr>
+    </thead>
+    <tbody class='fields'>
+      <%= f.simple_fields_for :words do |builder| %>
+        <%= render 'word', f: builder %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to_add_row('Add Word', f, :words, class: 'btn btn-primary') %>
+  </div>
+<% end %>

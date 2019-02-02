@@ -39,10 +39,65 @@
   margin: 5px;
 }
 
+tr {
+  font-size: x-large;
+}
+
+tr td span {
+  white-space: nowrap;
+}
+
+@font-face {
+  font-family: 'kelasaval';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/fonts/kelasaval.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'faraz';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/fonts/faraz.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'irkoodak';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/fonts/irkoodak.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'farazOutline';
+  font-weight: normal;
+  font-style: normal;
+  src: url('/fonts/farazOutline.ttf') format('truetype');
+}
+
+tr:nth-child(4n) td .fa {
+  font-family: kelasaval
+}
+
+tr:nth-child(4n+1) td .fa {
+  font-family: faraz !important;
+}
+
+tr:nth-child(4n+2) td .fa {
+  font-family: farazOutline !important;
+}
+
+tr:nth-child(4n+3) td .fa {
+  font-family: irkoodak !important;
+}
+
 .skins-air {
   background-color: #fff;
   color: #333;
-  font-family: Quicksand, verdana, arial, helvetica, sans-serif;
+  /*font-family: Quicksand, verdana, arial, helvetica, sans-serif;*/
   font-size: 100%;
   font-weight: 400;
   margin: 0;
@@ -80,7 +135,7 @@
 
 
 .skins-air input, .skins-air select, .skins-air textarea {
-  font-family: Quicksand, verdana, arial, helvetica, sans-serif;
+  /*font-family: Quicksand, verdana, arial, helvetica, sans-serif;*/
   font-size: 1em;
   outline: 0;
   margin: 0;

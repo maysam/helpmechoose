@@ -10,7 +10,21 @@
       </ul>
     </div>
   <% end %>
+  <h1>
+    <%= form.object %>
+  </h1>
   <%= form.file_field :picture %><br>
+  <%= form.fields_for :word_tags do |wt| %>
+      <div class="field">
+        <%= wt.label :tag_id %>
+        <%= wt.select :tag_id, Tag.all.collect{|p| [p.text, p.id]}, include_blank: true %>
+
+    <% if wt.object.persisted? %>
+      <%= wt.check_box :_destroy %>
+      <%= wt.label :_destroy, "Destroy" %>
+    <% end %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

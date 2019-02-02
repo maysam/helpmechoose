@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_133419) do
+ActiveRecord::Schema.define(version: 2019_01_26_202810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,12 @@ ActiveRecord::Schema.define(version: 2019_01_21_133419) do
     t.index ["user_id"], name: "index_moods_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tweets", force: :cascade do |t|
     t.bigint "parent_id"
     t.string "text"
@@ -109,6 +115,15 @@ ActiveRecord::Schema.define(version: 2019_01_21_133419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "word_tags", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_word_tags_on_tag_id"
+    t.index ["word_id"], name: "index_word_tags_on_word_id"
+  end
+
   create_table "words", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -119,4 +134,6 @@ ActiveRecord::Schema.define(version: 2019_01_21_133419) do
   add_foreign_key "meanings", "words"
   add_foreign_key "moods", "users"
   add_foreign_key "tweets", "users"
+  add_foreign_key "word_tags", "tags"
+  add_foreign_key "word_tags", "words"
 end
